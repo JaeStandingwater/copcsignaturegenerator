@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City of Pryor Creek - Email Signature Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 650px;
+            width: 100%;
+        }
+        h1 {
+            color: #0f3ca2;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f4f6f9;
+            padding-bottom: 10px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        textarea {
+            resize: vertical;
+            height: 60px;
+            font-family: Arial, sans-serif;
+        }
+        .preview-box {
+            border: 1px dashed #0f3ca2;
+            padding: 20px;
+            margin: 25px 0;
+            background: #fff;
+            border-radius: 4px;
+        }
+        .btn-copy {
+            background-color: #0f3ca2;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .btn-copy:hover {
+            background-color: #0c2e7d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Email Signature Generator</h1>
+    
+    <div class="form-grid">
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" value="Silly Sally">
+        </div>
+        <div class="form-group">
+            <label for="title">Job Title</label>
+            <input type="text" id="title" value="Fashion Model and Philanthropist">
+        </div>
+        <div class="form-group">
+            <label for="dept">Department / Location</label>
+            <input type="text" id="dept" value="Pryor Creek Silly Hall">
+        </div>
+        <div class="form-group">
+            <label for="phone">Primary Phone</label>
+            <input type="text" id="phone" value="918-825-0888">
+        </div>
+        <div class="form-group">
+            <label for="phone2">Secondary Phone (Optional)</label>
+            <input type="text" id="phone2" placeholder="e.g., 918-555-0199">
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address (Optional)</label>
+            <input type="text" id="email" placeholder="ssally@pryorcreek.org">
+        </div>
+        <div class="form-group full-width">
+            <label for="quote">Custom Quote / Tagline (Optional)</label>
+            <textarea id="quote" placeholder="Type a cute quote or custom message here..."></textarea>
+        </div>
+    </div>
+
+    <div class="preview-box">
+        <div id="signature-output">
+            <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; line-height: 1.2; color: #333333; border-collapse: collapse;">
+                <tr>
+                    <td valign="middle" style="padding-right: 18px; vertical-align: middle; border-right: 3px solid #0f3ca2; padding-bottom: 2px;">
+                        <img src="https://www.pryorcreek.org/ImageRepository/Document?documentID=2722" width="115" alt="City Logo" style="display: block; border: 0; width: 175px; height: auto;" />
+                    </td>
+                    
+                    <td valign="top" style="padding-left: 18px; vertical-align: top; padding-bottom: 2px;">
+                        <span id="sig-name" style="font-size: 15px; font-weight: bold; color: #0f3ca2; display: block; margin: 0 0 2px 0; line-height: 1.1;">Silly Sally</span>
+                        
+                        <span style="font-size: 12px; color: #555555; display: block; margin: 0 0 4px 0; line-height: 1.1;">
+                            <span id="sig-title">Fashion Model and Philanthropist</span> &bull; <span id="sig-dept">Pryor Creek Silly Hall</span>
+                        </span>
+                        
+                        <span style="font-size: 12px; font-weight: bold; color: #0f3ca2; display: block; margin: 0 0 6px 0; line-height: 1.1;">City of Pryor Creek</span>
+                        
+                        <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; font-size: 11px; color: #555555; border-collapse: collapse; line-height: 1.4;">
+                            <tr id="row-phone">
+                                <td style="padding-right: 6px; padding-bottom: 2px; vertical-align: middle; font-weight: bold; color: #0f3ca2;">📞</td>
+                                <td style="padding-bottom: 2px; vertical-align: middle; color: #555555;">
+                                    <span id="sig-phone">918-825-0888</span>
+                                </td>
+                            </tr>
+                            <tr id="row-phone2" style="display: none;">
+                                <td style="padding-right: 6px; padding-bottom: 2px; vertical-align: middle; font-weight: bold; color: #0f3ca2;">📱</td>
+                                <td style="padding-bottom: 2px; vertical-align: middle; color: #555555;">
+                                    <span id="sig-phone2"></span>
+                                </td>
+                            </tr>
+                            <tr id="row-email" style="display: none;">
+                                <td style="padding-right: 6px; padding-bottom: 2px; vertical-align: middle; font-weight: bold; color: #0f3ca2;">✉️</td>
+                                <td style="padding-bottom: 2px; vertical-align: middle;">
+                                    <a id="sig-email-link" href="" style="color: #555555; text-decoration: none;"><span id="sig-email"></span></a>
+                                </td>
+                            </tr>
+                            <tr id="row-web">
+                                <td style="padding-right: 6px; padding-bottom: 2px; vertical-align: middle; font-weight: bold; color: #0f3ca2;">🌐</td>
+                                <td style="padding-bottom: 2px; vertical-align: middle;">
+                                    <a href="https://www.pryorcreek.org" style="color: #0f3ca2; text-decoration: none; font-weight: bold;">www.pryorcreek.org</a>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <div id="row-quote" style="display: none; margin-top: 6px; padding-top: 4px; border-top: 1px dotted #ccc; font-size: 11px; color: #666666; font-style: italic; max-width: 320px; line-height: 1.2;">
+                            <span id="sig-quote"></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <button class="btn-copy" id="btn-copy">Copy Email Signature</button>
+</div>
+
+<script>
+    // 1. Live Text Synchronization Engine
+    const fields = ['name', 'title', 'dept', 'phone'];
+    fields.forEach(field => {
+        document.getElementById(field).addEventListener('input', (e) => {
+            document.getElementById(`sig-${field}`).textContent = e.target.value || `[${field}]`;
+        });
+    });
+
+    // 2. Dynamic Field Show/Hide Listeners
+    document.getElementById('phone2').addEventListener('input', (e) => {
+        const value = e.target.value.trim();
+        const row = document.getElementById('row-phone2');
+        const display = document.getElementById('sig-phone2');
+        if (value) {
+            display.textContent = value;
+            row.style.display = 'table-row';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+
+    document.getElementById('email').addEventListener('input', (e) => {
+        const value = e.target.value.trim();
+        const row = document.getElementById('row-email');
+        const display = document.getElementById('sig-email');
+        const link = document.getElementById('sig-email-link');
+        if (value) {
+            display.textContent = value;
+            link.href = 'mailto:' + value;
+            row.style.display = 'table-row';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+
+    document.getElementById('quote').addEventListener('input', (e) => {
+        const value = e.target.value.trim();
+        const row = document.getElementById('row-quote');
+        const display = document.getElementById('sig-quote');
+        if (value) {
+            display.textContent = value;
+            row.style.display = 'block';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+
+    // 3. Rich Text Selection & Clipboard Copy Mechanics
+    document.getElementById('btn-copy').addEventListener('click', () => {
+        const container = document.getElementById('signature-output');
+        const range = document.createRange();
+        range.selectNode(container);
+        
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        
+        try {
+            if (document.execCommand('copy')) {
+                alert('Signature successfully copied! Open your email settings and paste (Ctrl+V) it in.');
+            }
+        } catch (err) {
+            alert('Unable to copy automatically. Please manually highlight the signature and copy it.');
+        }
+        selection.removeAllRanges();
+    });
+</script>
+
+</body>
+</html>
