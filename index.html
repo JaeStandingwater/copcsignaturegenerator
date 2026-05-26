@@ -624,7 +624,7 @@
         var hasContact  = hasPhone || hasEmail || hasWebsite;
 
         var hasDisclaimer = v.showDisclaimer && v.disclaimer;
-        var hasFooter = hasSocials || hasDisclaimer;
+        var hasFooter = hasDisclaimer;
 
         // Toggle disclaimer textarea visibility
         disclaimerField.style.display = v.showDisclaimer ? '' : 'none';
@@ -706,20 +706,6 @@
           h += '<tr><td colspan="' + cols + '" style="padding-top: 14px; font-size: 0; line-height: 0;">';
           h += '<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td height="1" style="height: 1px; background-color: ' + c + '; font-size: 0; line-height: 0;">&nbsp;</td></tr></table>';
           h += '</td></tr>';
-
-          // Social icons
-          if (hasSocials) {
-            h += '<tr><td colspan="' + cols + '" style="padding-top: 10px; padding-bottom: 10px; line-height: 0;">';
-            h += '<table cellpadding="0" cellspacing="0" border="0"><tr>';
-            socials.forEach(function (s, i) {
-              var pr = i < socials.length - 1 ? '8' : '0';
-              h += '<td style="padding-right: ' + pr + 'px; line-height: 0;">';
-              h += '<a href="' + escAttr(addProto(s.url)) + '" target="_blank" style="display: inline-block; text-decoration: none; line-height: 0;">';
-              h += '<img src="' + escAttr(s.icon) + '" alt="' + escAttr(s.alt) + '" width="26" height="26" style="display: block; width: 26px; height: 26px; border: 0;" />';
-              h += '</a></td>';
-            });
-            h += '</tr></table>';
-            h += '</td></tr>';
 
             // Divider between socials and disclaimer
             if (hasDisclaimer) {
