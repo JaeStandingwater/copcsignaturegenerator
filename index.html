@@ -706,25 +706,17 @@
           h += '<tr><td colspan="' + cols + '" style="padding-top: 14px; font-size: 0; line-height: 0;">';
           h += '<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td height="1" style="height: 1px; background-color: ' + c + '; font-size: 0; line-height: 0;">&nbsp;</td></tr></table>';
           h += '</td></tr>';
+        }
 
-            // Divider between socials and disclaimer
-            if (hasDisclaimer) {
-              h += '<tr><td colspan="' + cols + '" style="font-size: 0; line-height: 0;">';
-              h += '<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td height="1" style="height: 1px; background-color: ' + c + '; font-size: 0; line-height: 0;">&nbsp;</td></tr></table>';
-              h += '</td></tr>';
-            }
-          }
+        // Disclaimer
+        if (hasDisclaimer) {
+          var dText = esc(v.disclaimer).replace(/\n/g, '<br>');
+          // Bold the first word before a colon if present (e.g. "Important:")
+          dText = dText.replace(/^([^:&<]+:)/, '<strong style="color: #555555;">$1</strong>');
 
-          // Disclaimer
-          if (hasDisclaimer) {
-            var dText = esc(v.disclaimer).replace(/\n/g, '<br>');
-            // Bold the first word before a colon if present (e.g. "Important:")
-            dText = dText.replace(/^([^:&<]+:)/, '<strong style="color: #555555;">$1</strong>');
-
-            h += '<tr><td colspan="' + cols + '" style="font-family: ' + f + '; font-size: 10px; color: #666666; line-height: 1.5; padding-top: 10px;">';
-            h += dText;
-            h += '</td></tr>';
-          }
+          h += '<tr><td colspan="' + cols + '" style="font-family: ' + f + '; font-size: 10px; color: #666666; line-height: 1.5; padding-top: 10px;">';
+          h += dText;
+          h += '</td></tr>';
         }
 
         h += '</table>';
@@ -735,8 +727,7 @@
       var textInputs = [
         'sig-name', 'sig-title', 'sig-company',
         'sig-phone', 'sig-email', 'sig-website',
-        'sig-logo',
-        'sig-disclaimer'
+        'sig-logo', 'sig-disclaimer'
       ];
       textInputs.forEach(function (id) {
         el[id].addEventListener('input', render);
@@ -879,8 +870,9 @@
         });
       });
 
-      // ============= INITIAL RENDER =============
+      // Run initial render on load so the staging area is populated right away
       render();
+
     })();
   </script>
 </body>
